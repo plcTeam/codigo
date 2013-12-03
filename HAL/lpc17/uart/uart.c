@@ -17,6 +17,8 @@
 #include <LPC17xx.h>
 #include <string.h>
 
+//Putos !!!!!!!!!!!!!!
+
 typedef struct 
 {
 	uint32_t gu32Counter;
