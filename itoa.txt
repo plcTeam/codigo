@@ -1,0 +1,25 @@
+static unsigned char *itoa(unsigned int numero);
+
+Uart_SendString(LPC_UART3, itoa(456));
+
+static unsigned char *itoa(unsigned int numero)
+{
+	static unsigned char buffer[7]="000000";
+	unsigned int u32residuo=0;
+	
+	
+	buffer[0] = (numero / 100000) + 0x30;
+	u32residuo = (numero % 100000);
+	buffer[1] = (u32residuo / 10000) + 0x30;
+	u32residuo = (u32residuo % 10000);
+	buffer[2] = (u32residuo / 1000) + 0x30;
+	u32residuo = (u32residuo % 1000);
+	buffer[3] = (u32residuo / 100) + 0x30;
+	u32residuo = (u32residuo % 100);
+	buffer[4] = (u32residuo / 10) + 0x30;
+	u32residuo = (u32residuo % 10);
+	buffer[5] = (u32residuo / 1) + 0x30;
+	u32residuo = (u32residuo % 1);
+	
+	return &buffer[0];
+}
